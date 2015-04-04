@@ -1,0 +1,240 @@
+#clock_container {
+  margin: 0 auto;
+  width: 100%;
+  text-align: center; }
+
+#alarm_control_panel {
+  font-size: 1.8em; }
+  #alarm_control_panel .set_alarm_cont {
+    border: 0 rgba(255, 255, 255, 0.3) solid;
+    width: 310px;
+    padding-top: 6px;
+    margin: 0 auto;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.3);
+    height: 49px;
+    -webkit-transition: 0.15s color ease;
+    -moz-transition: 0.15s color ease;
+    -ms-transition: 0.15s color ease;
+    -o-transition: 0.15s color ease;
+    transition: 0.15s color ease;
+    -webkit-border-radius: 0.5em;
+    -moz-border-radius: 0.5em;
+    border-radius: 0.5em; }
+  #alarm_control_panel .set_alarm_cont:hover {
+    border-width: 1px;
+    padding-top: 5px;
+    color: #87A93B;
+    border-color: #87A93B;
+    -webkit-transition: 0.15s color ease;
+    -moz-transition: 0.15s color ease;
+    -ms-transition: 0.15s color ease;
+    -o-transition: 0.15s color ease;
+    transition: 0.15s color ease; }
+
+.set_alarm_modal {
+  background-color: whitesmoke;
+  position: absolute;
+  font-family: 'Titillium Web', sans-serif;
+  left: 50%;
+  top: 50%;
+  margin: -270px 0 0 -390px;
+  color: #333; }
+  .set_alarm_modal .avgrund-close-theme {
+    padding-top: 4px;
+    text-align: center;
+    width: 40px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: -50px;
+    background: white;
+    border-radius: 50%;
+    font-size: 2em;
+    height: 39px;
+    color: #555; }
+    .set_alarm_modal .avgrund-close-theme i:hover {
+      color: red; }
+
+#alarm_settings_dialog {
+  display: none; }
+
+#settings_cont {
+  width: 100%;
+  height: 350px;
+  color: black; }
+  #settings_cont #settings_slider {
+    color: #000;
+    width: 461px;
+    overflow: hidden; }
+    #settings_cont #settings_slider > ul {
+      padding: 0;
+      width: 100000px;
+      overflow: hidden;
+      margin-top: 70px;
+      margin-left: -6px;
+      text-align: center; }
+      #settings_cont #settings_slider > ul > li {
+        float: left;
+        width: 459px;
+        list-style-type: none;
+        height: 311px; }
+        #settings_cont #settings_slider > ul > li button[type=submit] {
+          background: #444;
+          border: 0;
+          outline: 0;
+          color: #fff;
+          font-weight: bold;
+          display: inline-block;
+          font-size: .8em;
+          padding: 10px 15px;
+          border-radius: 4px;
+          margin-top: 20px;
+          cursor: pointer;
+          -webkit-transition: all 200ms ease-in-out; }
+        #settings_cont #settings_slider > ul > li h2 {
+          font-size: 2.7em;
+          color: #6F8C2D; }
+      #settings_cont #settings_slider > ul li#tune_chooser {
+        height: 200px;
+        padding-left: 15px; }
+        #settings_cont #settings_slider > ul li#tune_chooser ul {
+          list-style-type: none;
+          padding: 0;
+          margin: 0 0 0 110px; }
+          #settings_cont #settings_slider > ul li#tune_chooser ul li {
+            width: 50px;
+            height: 50px;
+            float: left;
+            margin: 13px 10px 0 auto;
+            border: 1px #a19696 solid;
+            background: transparent url("") no-repeat top left;
+            cursor: pointer; }
+            #settings_cont #settings_slider > ul li#tune_chooser ul li i {
+              color: black;
+              font-size: 25px;
+              -moz-opacity: 0.30;
+              -khtml-opacity: 0.30;
+              opacity: 0.30;
+              filter: progid:DXImageTransform.Microsoft.Alpha(opacity=30);
+              filter: alpha(opacity=30);
+              padding: 14px; }
+          #settings_cont #settings_slider > ul li#tune_chooser ul li.chosen {
+            background-image: url("/images/media/minion_ring_ring.png");
+            -webkit-box-shadow: 0 0 20px blue;
+            -moz-box-shadow: 0 0 20px blue;
+            box-shadow: 0 0 20px #688427;
+            filter: none;
+            -webkit-filter: grayscale(0%); }
+          #settings_cont #settings_slider > ul li#tune_chooser ul li:hover i {
+            font-size: 25px;
+            -moz-opacity: 0.80;
+            -khtml-opacity: 0.80;
+            opacity: 0.80;
+            filter: progid:DXImageTransform.Microsoft.Alpha(opacity=80);
+            filter: alpha(opacity=80); }
+
+#weather_container {
+  float: left;
+  width: 39%;
+  margin-top: 60px;
+  margin-left: 47px; }
+  #weather_container i.wi {
+    font-size: 117px;
+    float: left; }
+  #weather_container .weather_location {
+    margin-bottom: 37px;
+    height: 20px; }
+    #weather_container .weather_location .weather_city_preview {
+      text-shadow: 1px 1px 29px rgba(255, 255, 255, 0.49);
+      color: #87A93B;
+      font-size: 19px; }
+    #weather_container .weather_location a {
+      color: #87A93B;
+      text-decoration: none; }
+    #weather_container .weather_location a:hover {
+      text-decoration: underline; }
+  #weather_container .weather_details {
+    float: right;
+    width: 187px;
+    height: 100px;
+    text-align: left; }
+    #weather_container .weather_details .weather_value {
+      font-size: 50px; }
+      #weather_container .weather_details .weather_value .weather_unit {
+        color: #4E4A4A; }
+      #weather_container .weather_details .weather_value .weather_number {
+        text-shadow: 1px 1px 29px rgba(255, 255, 255, 0.49); }
+    #weather_container .weather_details h3.weather_desc {
+      margin: 0;
+      color: #4E4A4A; }
+
+#chat_container {
+  float: left;
+  width: 49%; }
+  #chat_container .btn-default, #chat_container .form-control {
+    color: #87A93B;
+    background-color: #2C2B2B; }
+  #chat_container .chat_box {
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border: 1px #D4D4D4 solid;
+    border-bottom: 0;
+    height: 200px;
+    width: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -webkit-box-shadow: 0px 0px 74px -21px #cfd1c9;
+    -moz-box-shadow: 0px 0px 74px -21px #cfd1c9;
+    box-shadow: 0px 0px 74px -21px #cfd1c9; }
+    #chat_container .chat_box ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      text-align: left; }
+      #chat_container .chat_box ul li:nth-child(even) > div {
+        background-color: #363232; }
+      #chat_container .chat_box ul li {
+        text-align: left;
+        clear: both; }
+        #chat_container .chat_box ul li div:first-child {
+          font-family: 'fontello', sans-serif;
+          float: left;
+          width: 12%;
+          font-size: 16px;
+          height: 29px;
+          padding-top: 5px;
+          color: #87A93B;
+          padding-left: 3px; }
+        #chat_container .chat_box ul li div:nth-child(2) {
+          float: left;
+          padding-top: 9px;
+          width: 88%;
+          padding-left: 2px;
+          padding-bottom: 5px; }
+
+.input-group .form-control:last-child, .input-group-addon:last-child, .input-group-btn:last-child > .btn, .input-group-btn:last-child > .btn-group > .btn, .input-group-btn:last-child > .dropdown-toggle, .input-group-btn:first-child > .btn:not(:first-child), .input-group-btn:first-child > .btn-group:not(:first-child) > .btn {
+  border-top-right-radius: 0;
+  -moz-border-radius-topright: 0px;
+  -webkit-border-top-right-radius: 0px; }
+
+.input-group .form-control:first-child, .input-group-addon:first-child, .input-group-btn:first-child > .btn, .input-group-btn:first-child > .btn-group > .btn, .input-group-btn:first-child > .dropdown-toggle, .input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle), .input-group-btn:last-child > .btn-group:not(:last-child) > .btn {
+  border-top-left-radius: 0;
+  -moz-border-radius-topleft: 0px;
+  -webkit-border-top-left-radius: 0px; }
+
+.jp_container_1 {
+  position: absolute;
+  bottom: 0; }
+
+.avgrund-cover {
+  transform-origin: 50% 50%;
+  -webkit-transition-duration: .3s;
+  -webkit-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition-property: -webkit-transform,background-color; }
+
+/*# sourceMappingURL=clock.css.map */
