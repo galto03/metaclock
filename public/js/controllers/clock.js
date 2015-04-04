@@ -188,7 +188,6 @@ MetaClockApp.controller('ClockController', function($scope,$interval,Utils,$http
         3200: 'wi-cloud'
     };
 
-
     // Fix chat heights, should call for each ajax refresh of chat box
     var forEach = Function.prototype.call.bind( Array.prototype.forEach );
     forEach($('#chat_container .chat_box ul li div:first-child'), function(elm) {
@@ -197,18 +196,27 @@ MetaClockApp.controller('ClockController', function($scope,$interval,Utils,$http
     });
 
     // Init the geo locations
+    $scope.pending_geo = true;
     if (!("geolocation" in navigator)) {
         $('.use_your_location_link').show();
         loadWeather('New York City',245911,false);
+        $scope.pending_geo = false;
     } else {
         $('.use_your_location_link').hide();
         navigator.geolocation.getCurrentPosition(function(position) {
-            loadWeather(position.coords.latitude+','+position.coords.longitude,null,true); //load weather using your lat/lng coordinates
-        });
+            $scope.pending_geo = false;
+            loadWeather(position.coords.latitude+','+position.coords.longitude,null,true);
+        },
+        function (error) {
+            $('.use_your_location_link').show();
+            $scope.pending_geo = false;
+            loadWeather('New York City',245911,false);
+        },{timeout:5000});
     }
 
     $('.use_your_location_link').on('click', function() {
         navigator.geolocation.getCurrentPosition(function(position) {
+            $scope.pending_geo = false;
             loadWeather(position.coords.latitude+','+position.coords.longitude,null,true); //load weather using your lat/lng coordinates
         });
     });
@@ -247,22 +255,67 @@ MetaClockApp.controller('ClockController', function($scope,$interval,Utils,$http
                 else
                     $weatherIcon.addClass('wi-cloud');
 
+
             },
             error: function(error) {
                 angular.element("#weather_container").html('<p>'+error+'</p>');
+
             }
         });
     }
 
 
 
-    $http.post('/ajax/submit_message', {msg:'hello word!'}).
-        success(function(data, status, headers, config) {
-            // this callback will be called asynchronously
-            // when the response is available
-        }).
-        error(function(data, status, headers, config) {
+    $scope.chatText = '';
+    $scope.send_in_process = true;
+    $scope.messages_json = {};
+    $scope.pushMessageAndUpdate = function() {
+        if ($scope.chatText.length == 0)
+            return;
+
+        $scope.send_in_process = true;
+
+        $http({
+            method: 'POST',
+            url: '/ajax/submit_message',
+            data: "msg=" + $scope.chatText,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        })
+        .success(function(data, status, headers, config) {
+                console.log(data);
+                $scope.send_in_process = false;
+                $scope.chatText = '';
+
+            })
+        .error(function(data, status, headers, config) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
+                $scope.send_in_process = false;
+                //TODO: error?
         });
+
+    };
+    $scope.updateMessages = function() {
+        $scope.send_in_process = true;
+        $http({
+            method: 'POST',
+            url: '/ajax/get_chat_messages',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        })
+            .success(function(data, status, headers, config) {
+                console.log(data);
+                $scope.send_in_process = false;
+                $scope.messages_json = data;
+
+            })
+            .error(function(data, status, headers, config) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+                $scope.send_in_process = false;
+                //TODO: error?
+            });
+    };
+
+    $scope.updateMessages();
+
 });

@@ -44,10 +44,6 @@
   }
 }
 
-#weather_preview {
-
-}
-
 .set_alarm_modal {
   background-color:whitesmoke;
   position: absolute;
@@ -187,10 +183,25 @@
   width: 39%;
   margin-top: 60px;
   margin-left: 47px;
+  position: relative;
+
+  .weather_overly {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    padding-top: 71px;
+    opacity: 0.8;
+  }
+
   i.wi {
     font-size: 117px;
     float: left;
   }
+
+
 
   .weather_location {
     margin-bottom: 37px;
@@ -259,11 +270,22 @@
     width: 300px;
     overflow-y: scroll;
     overflow-x: hidden;
+    position:relative;
 
     -webkit-box-shadow: 0px 0px 74px -21px rgba(207,209,201,1);
     -moz-box-shadow: 0px 0px 74px -21px rgba(207,209,201,1);
     box-shadow: 0px 0px 74px -21px rgba(207,209,201,1);
 
+    .chat_overly {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgb(74, 65, 65);
+      padding-top: 71px;
+      opacity: 0.8;
+    }
     ul {
       list-style-type: none;
       margin: 0;

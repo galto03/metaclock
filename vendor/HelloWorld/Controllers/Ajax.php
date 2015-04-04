@@ -15,40 +15,36 @@ class Ajax extends \Swiftlet\Abstracts\Controller
      */
     public function index(array $args = array())
     {
-        // Create a model instance, see /HelloWorld/Models/Example.php
         $xmlParser = $this->app->getModel('chatxmlparser');
-//        $a = new ChatXmlParser();
-//        $a->addMessage("Hello");
 
         $this->view->response = 'Fuck you';
 
-        // Get some data from the model and pass it to the view to display it
-        //$this->view->helloWorld = $example->getHelloWorld();
     }
 
     public function get_chat_messages(array $args = array())
     {
-        // Create a model instance, see /HelloWorld/Models/Example.php
         $xmlParser = $this->app->getModel('chatxmlparser');
-//        $a = new ChatXmlParser();
-//        $a->addMessage("Hello");
+        $chat = new ChatXmlParser();
 
-        $this->view->response = $_GET;
+        $this->view->response = $chat->getAllMessages();
 
-        // Get some data from the model and pass it to the view to display it
-        //$this->view->helloWorld = $example->getHelloWorld();
     }
 
     public function submit_message(array $args = array())
     {
-        // Create a model instance, see /HelloWorld/Models/Example.php
+        if (!isset($_POST['msg']))
+        {
+            $this->view->response = false;
+            return;
+        }
+
         $xmlParser = $this->app->getModel('chatxmlparser');
-//        $a = new ChatXmlParser();
-//        $a->addMessage("Hello");
+        $chat = new ChatXmlParser();
 
-        $this->view->response = $_GET['msg'];
+        $msg = urldecode($_POST['msg']);
 
-        // Get some data from the model and pass it to the view to display it
-        //$this->view->helloWorld = $example->getHelloWorld();
+        $chat->addMessage($msg);
+
+        $this->view->response = $chat->getAllMessages();
     }
 }
